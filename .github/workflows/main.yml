@@ -29,18 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v1 # Updated to use a specific version tag
-
-      - name: Install behave and dependencies
+        uses: actions/checkout@v2
+      - name: Install chromedriver
+        uses: nanasess/setup-chromedriver@master
+      - name: Install behave
         run: pip install behave behave-webdriver
-
       - name: Run behave
         run: behave
